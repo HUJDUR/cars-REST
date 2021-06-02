@@ -2,18 +2,73 @@
 	{
 		"carName": "Ford Fiesta",
 		"numberOfSales": 120,
-		"approximatedPrice": 14000
+		"approximatedPrice": 14000,
+		"rating": 4.1
 	},
-
-	{ "carName": "Nissan Qashqai", "numberOfSales": 125 },
-	{ "carName": "Renault Megane Berlina", "numberOfSales": 79 },
-	{ "carName": "Volkswagen Tiguan", "numberOfSales": 102 },
-	{ "carName": "Toyota Corolla Sedan", "numberOfSales": 151 },
-	{ "carName": "Volkswagen Polo", " numberOfSales": 220 },
-	{ "carName": "Dacia Sandero ", "numberOfSales": 259 },
-	{ "carName": "Volkswagen Passat", "numberOfSales": 359 },
-	{ "carName": "Volkswagen Golf", "numberOfSales": 430 },
-	{ "carName": "Skoda Fabia", "numberOfSales": 48 },
-	{ "carName": "Skoda Octavia", "numberOfSales": 595 },
-	{ "carName": "Citroen C3", "numberOfSales": 543 }
+	{
+		"carName": "Nissan Qashqai",
+		"numberOfSales": 125,
+		"approximatedPrice": 20000,
+		"rating": 4.6
+	},
+	{
+		"carName": "Renault Megane Berlina",
+		"numberOfSales": 79,
+		"approximatedPrice": 17400,
+		"rating": 4.3
+	},
+	{
+		"carName": "Volkswagen Tiguan",
+		"numberOfSales": 102,
+		"approximatedPrice": 12900,
+		"rating": 4.0
+	},
+	{
+		"carName": "Toyota Corolla Sedan",
+		"numberOfSales": 151,
+		"approximatedPrice": 23650,
+		"rating": 4.9
+	},
+	{
+		"carName": "Volkswagen Polo",
+		" numberOfSales": 220,
+		"approximatedPrice": 6500,
+		"rating": 3.7
+	},
+	{
+		"carName": "Dacia Sandero ",
+		"numberOfSales": 259,
+		"approximatedPrice": 11700,
+		"rating": 3.9
+	},
+	{
+		"carName": "Volkswagen Passat",
+		"numberOfSales": 359,
+		"approximatedPrice": 9800,
+		"rating": 4.3
+	},
+	{
+		"carName": "Volkswagen Golf",
+		"numberOfSales": 430,
+		"approximatedPrice": 8300,
+		"rating": 4.2
+	},
+	{
+		"carName": "Skoda Fabia",
+		"numberOfSales": 48,
+		"approximatedPrice": 13900,
+		"rating": 4.0
+	},
+	{
+		"carName": "Skoda Octavia",
+		"numberOfSales": 595,
+		"approximatedPrice": 15000,
+		"rating": 4.1
+	},
+	{
+		"carName": "Citroen C3",
+		"numberOfSales": 543,
+		"approximatedPrice": 9600,
+		"rating": 3.5
+	}
 ]
