@@ -1,0 +1,19 @@
+[
+	{
+		"carName": "Ford Fiesta",
+		"numberOfSales": 120,
+		"approximatedPrice": 14000
+	},
+
+	{ "carName": "Nissan Qashqai", "numberOfSales": 125 },
+	{ "carName": "Renault Megane Berlina", "numberOfSales": 79 },
+	{ "carName": "Volkswagen Tiguan", "numberOfSales": 102 },
+	{ "carName": "Toyota Corolla Sedan", "numberOfSales": 151 },
+	{ "carName": "Volkswagen Polo", " numberOfSales": 220 },
+	{ "carName": "Dacia Sandero ", "numberOfSales": 259 },
+	{ "carName": "Volkswagen Passat", "numberOfSales": 359 },
+	{ "carName": "Volkswagen Golf", "numberOfSales": 430 },
+	{ "carName": "Skoda Fabia", "numberOfSales": 48 },
+	{ "carName": "Skoda Octavia", "numberOfSales": 595 },
+	{ "carName": "Citroen C3", "numberOfSales": 543 }
+]

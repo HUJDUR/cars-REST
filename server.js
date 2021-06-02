@@ -7,7 +7,7 @@ const app = require('./app.js');
 const port = process.env.PORT || 3000;
 
 const DB = process.env.DATABASE.replace(
-	'<PASSWORD>',
+	'<password>',
 	process.env.DATABASE_PASSWORD
 );
 
@@ -16,6 +16,7 @@ mongoose
 		useNewUrlParser: true,
 		useCreateIndex: true,
 		useFindAndModify: false,
+		useUnifiedTopology: true,
 	})
 	.then(() => console.log('Database connected!'));
 
