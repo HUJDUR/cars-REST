@@ -1,12 +1,18 @@
 const Car = require('../models/carModel');
+const APIFeatures = require('../utils/APIFeatures');
 
-exports.getAllCars = async function (_, res) {
+exports.getAllCars = async function (req, res) {
 	try {
-		const find = await Car.find();
+		const features = new APIFeatures(Car.find(), req.query)
+			.filter()
+			.sort()
+			.paginate()
+			.limitFields();
+		const cars = await features.query;
 		res.status(200).json({
 			status: 'success',
 			data: {
-				find,
+				cars,
 			},
 		});
 	} catch (err) {}
