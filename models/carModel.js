@@ -10,7 +10,7 @@ const carSchema = new mongoose.Schema({
 		type: Number,
 		required: [true, 'A car must have number of sales!'],
 	},
-	approximatedPrice: {
+	price: {
 		type: Number,
 		required: false,
 	},
