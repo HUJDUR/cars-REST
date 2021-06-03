@@ -11,11 +11,14 @@ exports.getAllCars = async function (req, res) {
 		const cars = await features.query;
 		res.status(200).json({
 			status: 'success',
+			results: cars.length,
 			data: {
 				cars,
 			},
 		});
-	} catch (err) {}
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 exports.getCar = async function (req, res) {
@@ -28,7 +31,9 @@ exports.getCar = async function (req, res) {
 				car,
 			},
 		});
-	} catch (err) {}
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 exports.createCar = async function (req, res) {
@@ -40,21 +45,27 @@ exports.createCar = async function (req, res) {
 				newCar,
 			},
 		});
-	} catch (err) {}
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 exports.updateCar = async function (req, res) {
-	const car = Car.findByIdAndUpdate(req.params.id, req.body, {
-		new: true,
-		runValidators: true,
-	});
+	try {
+		const car = Car.findByIdAndUpdate(req.params.id, req.body, {
+			new: true,
+			runValidators: true,
+		});
 
-	res.status(200).json({
-		status: 'success',
-		data: {
-			car,
-		},
-	});
+		res.status(200).json({
+			status: 'success',
+			data: {
+				car,
+			},
+		});
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 exports.deleteCar = async function (req, res) {
@@ -66,5 +77,7 @@ exports.deleteCar = async function (req, res) {
 			status: 'success',
 			data: null,
 		});
-	} catch (err) {}
+	} catch (err) {
+		console.log(err);
+	}
 };

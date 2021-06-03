@@ -3,72 +3,84 @@
 		"carName": "Ford Fiesta",
 		"numberOfSales": 120,
 		"price": 14000,
-		"rating": 4.1
+		"rating": 4.1,
+		"ratingsnQuantity": 15
 	},
 	{
 		"carName": "Nissan Qashqai",
 		"numberOfSales": 125,
 		"price": 20000,
-		"rating": 4.6
+		"rating": 4.6,
+		"ratingsQuantity": 18
 	},
 	{
 		"carName": "Renault Megane Berlina",
 		"numberOfSales": 79,
 		"price": 17400,
-		"rating": 4.3
+		"rating": 4.3,
+		"ratingsQuantity": 8
 	},
 	{
 		"carName": "Volkswagen Tiguan",
 		"numberOfSales": 102,
 		"price": 12900,
-		"rating": 4.0
+		"rating": 4.0,
+		"ratingsQuantity": 23
 	},
 	{
 		"carName": "Toyota Corolla Sedan",
 		"numberOfSales": 151,
 		"price": 23650,
-		"rating": 4.9
+		"rating": 4.9,
+		"ratingsQuantity": 54
 	},
 	{
 		"carName": "Volkswagen Polo",
-		" numberOfSales": 220,
+		"numberOfSales": 220,
 		"price": 6500,
-		"rating": 3.7
+		"rating": 3.7,
+		"ratingsQuantity": 7
 	},
 	{
 		"carName": "Dacia Sandero ",
 		"numberOfSales": 259,
 		"price": 11700,
-		"rating": 3.9
+		"rating": 3.9,
+		"ratingsQuantity": 12
 	},
 	{
 		"carName": "Volkswagen Passat",
 		"numberOfSales": 359,
 		"price": 9800,
-		"rating": 4.3
+		"rating": 4.3,
+		"ratingsQuantity": 76
 	},
 	{
 		"carName": "Volkswagen Golf",
 		"numberOfSales": 430,
 		"price": 8300,
-		"rating": 4.2
+		"rating": 4.2,
+		"ratingsQuantity": 139
 	},
 	{
 		"carName": "Skoda Fabia",
 		"numberOfSales": 48,
 		"price": 13900,
-		"rating": 4.0
+		"rating": 4.0,
+		"ratingsQuantity": 25
 	},
 	{
 		"carName": "Skoda Octavia",
 		"numberOfSales": 595,
 		"price": 15000,
-		"rating": 4.1
+		"rating": 4.1,
+		"ratingsQuantity": 98
 	},
 	{
 		"carName": "Citroen C3",
 		"numberOfSales": 543,
 		"price": 9600,
-		"rating": 3.5
+		"rating": 3.5,
+		"ratingsQuantity": 203
 	}
 ]
