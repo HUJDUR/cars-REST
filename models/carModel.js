@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const carSchema = new mongoose.Schema({
 	carName: {
@@ -11,12 +12,12 @@ const carSchema = new mongoose.Schema({
 		type: Number,
 		required: [true, 'A car must have number of sales!'],
 	},
-	price: {
-		type: Number,
-	},
+	price: Number,
 	rating: {
 		type: Number,
 		default: 4.5,
+		min: [1, 'Rating must be above 1.0'],
+		max: [5, 'Rating must be below 5.0'],
 	},
 	createdAt: {
 		type: Date,
@@ -26,6 +27,12 @@ const carSchema = new mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
+	slug: String,
+});
+
+carSchema.pre('save', function (next) {
+	this.slug = slugify(this.name, { lower: true });
+	next();
 });
 
 const Car = mongoose.model('Car', carSchema);

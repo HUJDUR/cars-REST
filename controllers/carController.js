@@ -1,3 +1,4 @@
+const { default: slugify } = require('slugify');
 const Car = require('../models/carModel');
 const APIFeatures = require('../utils/APIFeatures');
 
@@ -9,6 +10,7 @@ exports.getAllCars = async function (req, res) {
 			.paginate()
 			.limitFields();
 		const cars = await features.query;
+
 		res.status(200).json({
 			status: 'success',
 			results: cars.length,
@@ -76,6 +78,31 @@ exports.deleteCar = async function (req, res) {
 		res.status(204).json({
 			status: 'success',
 			data: null,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+exports.getCarStats = async function (req, res) {
+	try {
+		const stats = await Car.aggregate([
+			{
+				$group: {
+					_id: null,
+					avgRating: { $avg: '$rating' },
+					avgPrice: { $avg: '$price' },
+					minPrice: { $min: '$price' },
+					maxPrice: { $max: '$price' },
+				},
+			},
+		]);
+
+		res.status(200).json({
+			status: 'success',
+			data: {
+				stats,
+			},
 		});
 	} catch (err) {
 		console.log(err);
