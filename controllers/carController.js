@@ -25,6 +25,7 @@ exports.getCar = catchAsync(async function (req, res, next) {
 	const car = await Car.findById(req.params.id);
 
 	if (!car) {
+		return next(AppError('There is no such car in the DB', 404));
 	}
 
 	res.status(200).json({
