@@ -31,7 +31,7 @@ const carSchema = new mongoose.Schema({
 });
 
 carSchema.pre('save', function (next) {
-	this.slug = slugify(this.name, { lower: true });
+	this.slug = slugify(this.carName, { lower: true });
 	next();
 });
 
