@@ -17,3 +17,13 @@ Values required in the file:
 - PORT=*Value*
 - DATABASE=*MongoDB Connection String*
 - DATABASE_PASSWORD=*MongoDB Password*
+
+When requesting for all cars in the database, there are filtering features using '**?**' after the URL, for example: '*/api/v1/cars/**?sort=price&fields=carName***'. 
+
+Chaining of features is available using '**&**'.
+
+Features available:
+- filter
+- sort
+- fields
+- pagination
