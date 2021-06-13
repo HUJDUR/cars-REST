@@ -25,7 +25,7 @@ exports.getCar = catchAsync(async function (req, res, next) {
 	const car = await Car.findById(req.params.id);
 
 	if (!car) {
-		return next(AppError('There is no such car in the DB', 404));
+		return next(AppError('There is no car with that ID.', 404));
 	}
 
 	res.status(200).json({
@@ -47,10 +47,12 @@ exports.createCar = catchAsync(async function (req, res, next) {
 });
 
 exports.updateCar = catchAsync(async function (req, res, next) {
-	const car = Car.findByIdAndUpdate(req.params.id, req.body, {
+	const car = await Car.findByIdAndUpdate(req.params.id, req.body, {
 		new: true,
 		runValidators: true,
 	});
+
+	if (!car) return next(new AppError('There is no car with that ID.', 404));
 
 	res.status(200).json({
 		status: 'success',
@@ -61,7 +63,9 @@ exports.updateCar = catchAsync(async function (req, res, next) {
 });
 
 exports.deleteCar = catchAsync(async function (req, res, next) {
-	await Car.findByIdAndDelete(req.params.id);
+	const car = await Car.findByIdAndDelete(req.params.id);
+
+	if (!car) return next(new AppError('There is no car with that ID.', 404));
 
 	//For some reason it doesn't send the json, just the status code
 	res.status(204).json({
