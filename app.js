@@ -28,8 +28,7 @@ app.use('/api/v1/cars', carRouter);
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
-	new AppError(`Can't find ${req.originalUrl} on this server!`, 404);
-	next();
+	next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 app.use(globalErrorHandler);

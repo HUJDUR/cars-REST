@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
 	username: {
@@ -41,6 +42,11 @@ const userSchema = new mongoose.Schema({
 			message: '{VALUE} is not supported.',
 		},
 	},
+});
+
+userSchema.pre('save', async function (doc) {
+	this.password = await bcrypt.hash(this.password, 12);
+	this.passwordConfirm = undefined;
 });
 
 const User = mongoose.model('User', userSchema);
