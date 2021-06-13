@@ -3,7 +3,10 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xssClean = require('xss-clean');
+
 const carRouter = require('./routes/carRoutes');
+const userRouter = require('./routes/userRoutes');
+
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/AppError');
 
@@ -22,6 +25,7 @@ app.use(
 );
 
 app.use('/api/v1/cars', carRouter);
+app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
 	new AppError(`Can't find ${req.originalUrl} on this server!`, 404);
