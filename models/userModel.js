@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: [true, 'A user must have a password.'],
-		minlength: 8,
+		minlength: [8, 'Password must be longer than 8 characters.'],
 		select: false,
 	},
 	passwordConfirm: {
@@ -30,6 +30,15 @@ const userSchema = new mongoose.Schema({
 				return this.passwordConfirm === this.password;
 			},
 			message: 'Passwords are not the same.',
+		},
+	},
+	role: {
+		type: String,
+		select: false,
+		default: 'user',
+		enum: {
+			values: ['user', 'admin'],
+			message: '{VALUE} is not supported.',
 		},
 	},
 });
