@@ -59,21 +59,34 @@ exports.login = catchAsync(async function (req, res, next) {
 });
 
 exports.authentication = catchAsync(async function (req, res, next) {
-	//Is there a token in the request?
-	const token = req.headers.authorization.split(' ')[1];
+	// Is there a token in the request?
+	const token = req.headers.authorization?.split(' ')[1];
 	if (!token) return next(new AppError('You are not logged in.', 401));
 
-	//Is the token okay?
+	// Is the token okay?
 	const decodedToken = await promisify(jwt.verify)(
 		token,
 		process.env.JWT_SECRET
 	);
 
-	//Did the user delete the account in the meanwhile
-	const user = await User.findById(decodedToken.id);
+	// Did the user delete the account in the meanwhile
+	const user = await User.findById(decodedToken.id).select('+role');
 	if (!user) return next(new AppError('The account has been deleted.', 401));
 
-	//Was the password changed
-	if (user.passwordChange(decodedToken.iat))
+	// Was the password changed
+	if (await user.passwordChange(decodedToken.iat))
 		return next(new AppError('The password has been changed.'), 401);
+
+	req.user = user;
+	next();
 });
+
+exports.restriction = function (req, res, next) {
+	if (!(req.user.role === 'admin')) {
+		return next(
+			new AppError('You do not have permission to perform this action', 403)
+		);
+	}
+
+	next();
+};
