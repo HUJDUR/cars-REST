@@ -42,17 +42,30 @@ const userSchema = new mongoose.Schema({
 			message: '{VALUE} is not supported.',
 		},
 	},
+	passwordChangedAt: Date,
 });
 
 userSchema.methods.comparePassword = async function (newPassword, dbPassword) {
 	return await bcrypt.compare(newPassword, dbPassword);
 };
 
-//userSchema.methods.passwordChange = async function()
+userSchema.methods.passwordChange = async function (issuedToken) {
+	if (this.passwordChangedAt) {
+		const passwordChangeTime = parseInt(
+			this.passwordChangedAt.getTime() / 1000,
+			10
+		);
+
+		return issuedToken < passwordChangeTime;
+	}
+
+	return false;
+};
 
 userSchema.pre('save', async function (doc) {
 	this.password = await bcrypt.hash(this.password, 12);
 	this.passwordConfirm = undefined;
+	this.passwordChangedAt = Date.now();
 });
 
 const User = mongoose.model('User', userSchema);

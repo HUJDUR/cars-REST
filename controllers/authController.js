@@ -73,5 +73,7 @@ exports.authentication = catchAsync(async function (req, res, next) {
 	const user = await User.findById(decodedToken.id);
 	if (!user) return next(new AppError('The account has been deleted.', 401));
 
-	next();
+	//Was the password changed
+	if (user.passwordChange(decodedToken.iat))
+		return next(new AppError('The password has been changed.'), 401);
 });
