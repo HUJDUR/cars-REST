@@ -56,16 +56,27 @@ userSchema.methods.passwordChange = async function (issuedToken) {
 			10
 		);
 
-		return issuedToken < passwordChangeTime;
+		return issuedToken > passwordChangeTime;
 	}
 
 	return false;
 };
 
-userSchema.pre('save', async function (doc) {
+userSchema.pre('save', async function (next) {
+	if (!this.isModified('password')) return next();
+
 	this.password = await bcrypt.hash(this.password, 12);
 	this.passwordConfirm = undefined;
+
+	next();
+});
+
+userSchema.pre('save', async function (next) {
+	if (!this.isModified('password') || this.isNew) return next();
+
 	this.passwordChangedAt = Date.now();
+
+	next();
 });
 
 const User = mongoose.model('User', userSchema);
