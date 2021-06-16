@@ -45,6 +45,8 @@ const userSchema = new mongoose.Schema({
 	passwordChangedAt: Date,
 });
 
+// Instance methods
+
 userSchema.methods.comparePassword = async function (newPassword, dbPassword) {
 	return await bcrypt.compare(newPassword, dbPassword);
 };
@@ -61,6 +63,8 @@ userSchema.methods.passwordChange = async function (issuedToken) {
 
 	return false;
 };
+
+// Middlewares
 
 userSchema.pre('save', async function (next) {
 	if (!this.isModified('password')) return next();
