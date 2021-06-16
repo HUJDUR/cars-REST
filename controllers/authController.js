@@ -84,9 +84,23 @@ exports.authentication = catchAsync(async function (req, res, next) {
 exports.restriction = function (req, res, next) {
 	if (!(req.user.role === 'admin')) {
 		return next(
-			new AppError('You do not have permission to perform this action', 403)
+			new AppError('You do not have permission to perform this action.', 403)
 		);
 	}
 
 	next();
 };
+
+exports.updatePassword = catchAsync(async function (req, res, next) {
+	const user = await User.findById(req.user.id).select('+password');
+
+	if (!(await user.comparePassword(req.body.currentPassword, user.password)))
+		return next(new AppError('Current password is wrong.', 401));
+
+	user.password = req.body.newPassword;
+	user.passwordConfirm = req.body.newPasswordConfirm;
+
+	await user.save();
+
+	signAndSendToken(user, res);
+});
