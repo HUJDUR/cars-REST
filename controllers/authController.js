@@ -81,7 +81,8 @@ exports.authentication = catchAsync(async function (req, res, next) {
 	next();
 });
 
-exports.restriction = function (req, res, next) {
+exports.authorization = function (req, res, next) {
+	// Restrict only to admin role
 	if (!(req.user.role === 'admin')) {
 		return next(
 			new AppError('You do not have permission to perform this action.', 403)
@@ -103,4 +104,20 @@ exports.updatePassword = catchAsync(async function (req, res, next) {
 	await user.save();
 
 	signAndSendToken(user, res);
+});
+
+exports.forgotPassword = catchAsync(async function (req, res, next) {
+	const user = User.findOne({ email: req.body.email });
+
+	if (!user)
+		return next(new AppError('There is no user with that email.', 404));
+
+	const mail = `${req.protocol}://${req.get(
+		'host'
+	)}/api/v1/users/resetPassword/${resetToken}`;
+
+	const emailMessage = `Here is your password recovery email! PATCH request to ${mail}.`;
+
+	try {
+	} catch (err) {}
 });

@@ -25,6 +25,7 @@
 		"helmet": "^4.6.0",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.12.12",
+		"nodemailer": "^6.6.1",
 		"nodemon": "^2.0.7",
 		"slugify": "^1.5.3",
 		"validator": "^13.6.0",
