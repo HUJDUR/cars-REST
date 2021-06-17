@@ -20,7 +20,7 @@ const sendEmail = async function (options) {
 		text: options.text,
 	};
 
-	await nodemailer.sendEmail(mailOptions);
+	await transporter.sendMail(mailOptions);
 };
 
 module.exports = sendEmail;
